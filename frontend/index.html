@@ -479,7 +479,7 @@ letter-spacing: -1.5px;
 .offers-header h2 em { color: var(--gold); font-style: italic; }
 .offers-grid {
 display: grid;
-grid-template-columns: repeat(3, 1fr);
+grid-template-columns: repeat(4, 1fr);
 gap: 2px;
 background: var(--border);
 }
@@ -560,6 +560,10 @@ border: 1px solid var(--gold);
 .offer-cta-gold:hover { background: var(--gold-light); }
 .offer-featured {
 position: relative;
+z-index: 9999;
+border: 1px solid var(--gold);
+transform: scale(1.05);
+translate: 0 -10px;
 }
 .offer-featured::before {
 content: ‘MOST POPULAR’;
@@ -963,7 +967,7 @@ footer { grid-template-columns: 1fr; gap: 40px; padding: 48px 28px; }
   <div class="section-label">Work With Me</div>
   <div class="offers-header reveal">
     <h2>Choose how<br>we <em>build</em> together.</h2>
-    <p>Three engagement paths — from foundational frameworks to deep executive partnership. All designed to deliver one thing: a leader who doesn't just manage, but multiplies.</p>
+    <p>Four engagement paths — from foundational frameworks to deep executive partnership. All designed to deliver one thing: a leader who doesn't just manage, but multiplies.</p>
   </div>
   <div class="offers-grid reveal">
     <!-- Entry -->
@@ -985,7 +989,7 @@ footer { grid-template-columns: 1fr; gap: 40px; padding: 48px 28px; }
     <!-- Mid -->
     <div class="offer-card">
       <div class="offer-tier">Mid · Live Cohort</div>
-      <div class="offer-price">$79</div>
+      <div class="offer-price">$89</div>
       <div class="offer-price-note">per cohort · 6 weeks</div>
       <div class="offer-name">POJCE Leadership System</div>
       <div class="offer-tagline">A 16-page clarity framework to help managers evolve and level-up with clarity for new Age Leadership</div>
@@ -1000,9 +1004,9 @@ footer { grid-template-columns: 1fr; gap: 40px; padding: 48px 28px; }
       <a href="https://stan.store/durgaonleadership" class="offer-cta offer-cta-outline" target="_blank">Join the Cohort →</a>
     </div>
     <!-- Mid -->
-    <div class="offer-card">
+    <div class="offer-card offer-featured">
       <div class="offer-tier">Mid · Live Cohort</div>
-      <div class="offer-price">$199</div>
+      <div class="offer-price">$249</div>
       <div class="offer-price-note">1:1 · 60 mins</div>
       <div class="offer-name">1:1 Leadership Coaching</div>
       <div class="offer-tagline">A private Clarity session to solve your toughest people and judgement challenges and brainstorm</div>
@@ -1014,12 +1018,12 @@ footer { grid-template-columns: 1fr; gap: 40px; padding: 48px 28px; }
         <li>Private community access (3 months)</li>
         <li>30-min 1:1 session with Durga</li>
       </ul>
-      <a href="https://stan.store/durgaonleadership" class="offer-cta offer-cta-outline" target="_blank">Join the Cohort →</a>
+      <a href="https://stan.store/durgaonleadership" class="offer-cta offer-cta-gold" target="_blank">Join the Cohort →</a>
     </div>
     <!-- Premium -->
-    <div class="offer-card offer-featured">
+    <div class="offer-card">
       <div class="offer-tier">Premium · 1:1 Partnership</div>
-      <div class="offer-price">$1,200</div>
+      <div class="offer-price">$1,199</div>
       <div class="offer-price-note">per month · 90-day minimum</div>
       <div class="offer-name">Executive Partner Retainer</div>
       <div class="offer-tagline">Private 1:1 coaching and advisory — for leaders who want a thought partner in their corner for the hard decisions, not just the frameworks.</div>
@@ -1031,7 +1035,7 @@ footer { grid-template-columns: 1fr; gap: 40px; padding: 48px 28px; }
         <li>Quarterly leadership review</li>
         <li>Direct WhatsApp/email access</li>
       </ul>
-      <a href="https://stan.store/durgaonleadership" class="offer-cta offer-cta-gold" target="_blank">Apply for Partnership →</a>
+      <a href="https://stan.store/durgaonleadership" class="offer-cta offer-cta-outline" target="_blank">Apply for Partnership →</a>
     </div>
   </div>
 </section>
