@@ -1,0 +1,1107 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Durga Dash — The Executive Edge</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Mono:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #B8965A;
+    --gold-light: #D4AF7A;
+    --gold-dim: #B8965A33;
+    --cream: #EDE8DF;
+    --cream-dim: #EDE8DF88;
+    --bg: #080706;
+    --bg2: #0E0C0A;
+    --bg3: #141210;
+    --text: #C8C0B4;
+    --text-dim: #6A6258;
+    --border: #1E1A16;
+  }
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+background: var(--bg);
+color: var(--text);
+font-family: ‘DM Mono’, monospace;
+font-size: 14px;
+line-height: 1.7;
+cursor: none;
+overflow-x: hidden;
+}
+
+/* Text selection */
+::selection {
+background: var(--gold);
+color: var(--bg);
+}
+
+::-moz-selection {
+background: var(--gold);
+color: var(--bg);
+}
+
+/* Custom cursor */
+.cursor {
+position: fixed;
+width: 8px; height: 8px;
+background: var(--gold);
+border-radius: 50%;
+pointer-events: none;
+z-index: 9999;
+transition: transform 0.15s ease, opacity 0.15s;
+transform: translate(-50%, -50%);
+}
+.cursor-ring {
+position: fixed;
+width: 32px; height: 32px;
+border: 1px solid var(--gold-dim);
+border-radius: 50%;
+pointer-events: none;
+z-index: 9998;
+transition: transform 0.4s ease, width 0.3s, height 0.3s;
+transform: translate(-50%, -50%);
+}
+
+/* Grain overlay */
+body::after {
+content: ‘’;
+position: fixed;
+inset: 0;
+background-image: url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22n%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.75%22 numOctaves=%224%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23n)%22 opacity=%220.04%22/%3E%3C/svg%3E');
+pointer-events: none;
+z-index: 9997;
+opacity: 0.4;
+}
+
+/* NAV */
+nav {
+position: fixed; top: 0; left: 0; right: 0;
+z-index: 100;
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 28px 60px;
+border-bottom: 1px solid transparent;
+transition: all 0.4s;
+}
+nav.scrolled {
+background: rgba(8,7,6,0.92);
+backdrop-filter: blur(16px);
+border-bottom-color: var(--border);
+padding: 20px 60px;
+}
+.nav-logo {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 20px;
+font-weight: 300;
+color: var(--cream);
+letter-spacing: 2px;
+text-decoration: none;
+}
+.nav-logo span { color: var(--gold); }
+.nav-links { display: flex; gap: 40px; list-style: none; }
+.nav-links a {
+color: var(--text-dim);
+text-decoration: none;
+font-size: 11px;
+letter-spacing: 2.5px;
+text-transform: uppercase;
+transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--gold); }
+.nav-cta {
+background: none;
+border: 1px solid var(--gold-dim);
+color: var(--gold);
+padding: 10px 24px;
+font-family: ‘DM Mono’, monospace;
+font-size: 11px;
+letter-spacing: 2px;
+text-transform: uppercase;
+cursor: none;
+transition: all 0.3s;
+text-decoration: none;
+}
+.nav-cta:hover { background: var(--gold); color: var(--bg); }
+
+/* HERO */
+.hero {
+min-height: 100vh;
+display: flex;
+flex-direction: column;
+justify-content: center;
+padding: 160px 60px 80px;
+position: relative;
+overflow: hidden;
+}
+.hero-bg-text {
+position: absolute;
+top: 50%; left: 50%;
+transform: translate(-50%, -50%);
+font-family: ‘Cormorant Garamond’, serif;
+font-size: clamp(120px, 18vw, 260px);
+font-weight: 300;
+color: transparent;
+-webkit-text-stroke: 1px rgba(184,150,90,0.06);
+white-space: nowrap;
+pointer-events: none;
+user-select: none;
+letter-spacing: -4px;
+}
+.hero-eyebrow {
+font-size: 11px;
+letter-spacing: 4px;
+color: var(--gold);
+text-transform: uppercase;
+margin-bottom: 32px;
+opacity: 0;
+animation: fadeUp 0.8s 0.2s forwards;
+}
+.hero-eyebrow::before {
+content: ‘’;
+display: inline-block;
+width: 40px; height: 1px;
+background: var(--gold);
+margin-right: 16px;
+vertical-align: middle;
+}
+.hero-headline {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: clamp(48px, 7vw, 108px);
+font-weight: 300;
+color: var(--cream);
+line-height: 0.95;
+letter-spacing: -2px;
+margin-bottom: 40px;
+max-width: 900px;
+opacity: 0;
+animation: fadeUp 0.8s 0.4s forwards;
+}
+.hero-headline em {
+font-style: italic;
+color: var(--gold);
+}
+.hero-sub {
+font-size: 15px;
+color: var(--text-dim);
+max-width: 520px;
+line-height: 1.8;
+margin-bottom: 56px;
+font-family: ‘DM Mono’, monospace;
+font-weight: 300;
+opacity: 0;
+animation: fadeUp 0.8s 0.6s forwards;
+}
+.hero-actions {
+display: flex;
+gap: 20px;
+align-items: center;
+flex-wrap: wrap;
+opacity: 0;
+animation: fadeUp 0.8s 0.8s forwards;
+}
+.btn-primary {
+background: var(--gold);
+color: var(--bg);
+padding: 16px 36px;
+font-family: ‘DM Mono’, monospace;
+font-size: 11px;
+letter-spacing: 2.5px;
+text-transform: uppercase;
+border: none;
+cursor: none;
+text-decoration: none;
+transition: all 0.3s;
+display: inline-block;
+}
+.btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+.btn-ghost {
+color: var(--cream-dim);
+font-size: 12px;
+letter-spacing: 1.5px;
+text-decoration: none;
+border-bottom: 1px solid var(--border);
+padding-bottom: 2px;
+transition: all 0.2s;
+}
+.btn-ghost:hover { color: var(--gold); border-color: var(--gold); }
+
+.hero-scroll {
+position: absolute;
+bottom: 48px; right: 60px;
+writing-mode: vertical-rl;
+font-size: 10px;
+letter-spacing: 3px;
+color: var(--text-dim);
+text-transform: uppercase;
+opacity: 0;
+animation: fadeIn 1s 1.2s forwards;
+}
+.hero-scroll::after {
+content: ‘’;
+display: block;
+width: 1px; height: 60px;
+background: var(--text-dim);
+margin: 16px auto 0;
+animation: scrollLine 2s 1.5s ease-in-out infinite;
+}
+
+/* TICKER */
+.ticker-wrap {
+border-top: 1px solid var(--border);
+border-bottom: 1px solid var(--border);
+padding: 18px 0;
+overflow: hidden;
+background: var(--bg2);
+}
+.ticker {
+display: flex;
+gap: 80px;
+animation: ticker 20s linear infinite;
+white-space: nowrap;
+}
+.ticker-item {
+font-size: 11px;
+letter-spacing: 3px;
+color: var(--text-dim);
+text-transform: uppercase;
+flex-shrink: 0;
+}
+.ticker-item span { color: var(--gold); margin: 0 8px; }
+
+/* ABOUT */
+.section { padding: 120px 60px; }
+.section-label {
+font-size: 10px;
+letter-spacing: 4px;
+color: var(--gold);
+text-transform: uppercase;
+margin-bottom: 20px;
+display: flex;
+align-items: center;
+gap: 16px;
+}
+.section-label::before {
+content: ‘’;
+width: 32px; height: 1px;
+background: var(--gold);
+}
+
+.about-grid {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 80px;
+align-items: start;
+}
+.about-left h2 {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: clamp(36px, 4vw, 60px);
+font-weight: 300;
+color: var(--cream);
+line-height: 1.15;
+letter-spacing: -1px;
+margin-bottom: 32px;
+}
+.about-left h2 em { font-style: italic; color: var(--gold); }
+.about-left p {
+color: var(--text-dim);
+font-size: 14px;
+line-height: 2;
+margin-bottom: 24px;
+}
+.about-stats {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 24px;
+margin-top: 40px;
+}
+.stat {
+border-top: 1px solid var(--border);
+padding-top: 20px;
+}
+.stat-number {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 48px;
+font-weight: 300;
+color: var(--gold);
+line-height: 1;
+margin-bottom: 8px;
+}
+.stat-label {
+font-size: 11px;
+letter-spacing: 2px;
+color: var(--text-dim);
+text-transform: uppercase;
+}
+.about-right {
+position: relative;
+}
+.about-card {
+background: var(--bg2);
+border: 1px solid var(--border);
+padding: 36px;
+margin-bottom: 20px;
+position: relative;
+overflow: hidden;
+}
+.about-card::before {
+content: ‘’;
+position: absolute;
+left: 0; top: 0; bottom: 0;
+width: 2px;
+background: var(--gold);
+}
+.about-card-label {
+font-size: 10px;
+letter-spacing: 3px;
+color: var(--gold);
+text-transform: uppercase;
+margin-bottom: 12px;
+}
+.about-card p { color: var(--text); font-size: 14px; line-height: 1.8; }
+
+/* POJCE SECTION */
+.pojce-section {
+padding: 120px 60px;
+background: var(--bg2);
+border-top: 1px solid var(--border);
+border-bottom: 1px solid var(--border);
+}
+.pojce-header {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 80px;
+margin-bottom: 80px;
+align-items: end;
+}
+.pojce-header h2 {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: clamp(40px, 5vw, 72px);
+font-weight: 300;
+color: var(--cream);
+line-height: 1.05;
+letter-spacing: -1.5px;
+}
+.pojce-header h2 em { color: var(--gold); font-style: italic; }
+.pojce-header p { color: var(--text-dim); font-size: 14px; line-height: 2; }
+.pojce-letters {
+display: flex;
+flex-direction: column;
+gap: 2px;
+}
+.pojce-letter {
+display: grid;
+grid-template-columns: 80px 1fr;
+align-items: center;
+gap: 0;
+border-top: 1px solid var(--border);
+padding: 28px 0;
+transition: all 0.3s;
+cursor: default;
+}
+.pojce-letter:last-child { border-bottom: 1px solid var(--border); }
+.pojce-letter:hover { background: var(--bg3); padding-left: 20px; }
+.pojce-initial {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 72px;
+font-weight: 300;
+color: var(--gold-dim);
+line-height: 1;
+transition: color 0.3s;
+}
+.pojce-letter:hover .pojce-initial { color: var(--gold); }
+.pojce-content-word {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 22px;
+color: var(--cream);
+margin-bottom: 6px;
+}
+.pojce-content-desc { font-size: 13px; color: var(--text-dim); line-height: 1.6; }
+
+/* OFFERS */
+.offers-section { padding: 120px 60px; }
+.offers-header {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 80px;
+align-items: end;
+margin-bottom: 80px;
+}
+.offers-header h2 {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: clamp(40px, 5vw, 72px);
+font-weight: 300;
+color: var(--cream);
+line-height: 1.05;
+letter-spacing: -1.5px;
+}
+.offers-header h2 em { color: var(--gold); font-style: italic; }
+.offers-grid {
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+gap: 2px;
+background: var(--border);
+}
+.offer-card {
+background: var(--bg);
+padding: 48px 36px;
+position: relative;
+transition: background 0.3s;
+}
+.offer-card:hover { background: var(--bg2); }
+.offer-tier {
+font-size: 10px;
+letter-spacing: 4px;
+color: var(--text-dim);
+text-transform: uppercase;
+margin-bottom: 24px;
+}
+.offer-price {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 56px;
+color: var(--gold);
+font-weight: 300;
+line-height: 1;
+margin-bottom: 4px;
+}
+.offer-price-note {
+font-size: 11px;
+color: var(--text-dim);
+margin-bottom: 32px;
+letter-spacing: 1px;
+}
+.offer-name {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 24px;
+color: var(--cream);
+margin-bottom: 16px;
+font-weight: 400;
+}
+.offer-tagline {
+font-size: 13px;
+color: var(--text-dim);
+line-height: 1.8;
+margin-bottom: 32px;
+border-bottom: 1px solid var(--border);
+padding-bottom: 28px;
+}
+.offer-items { list-style: none; margin-bottom: 40px; }
+.offer-items li {
+font-size: 13px;
+color: var(--text);
+padding: 10px 0;
+border-bottom: 1px solid var(--border);
+display: flex;
+gap: 12px;
+align-items: flex-start;
+}
+.offer-items li::before { content: ‘—’; color: var(--gold); flex-shrink: 0; }
+.offer-cta {
+display: block;
+text-align: center;
+padding: 14px;
+font-size: 11px;
+letter-spacing: 2px;
+text-transform: uppercase;
+text-decoration: none;
+transition: all 0.3s;
+}
+.offer-cta-outline {
+border: 1px solid var(--border);
+color: var(--text-dim);
+}
+.offer-cta-outline:hover { border-color: var(--gold); color: var(--gold); }
+.offer-cta-gold {
+background: var(--gold);
+color: var(--bg);
+border: 1px solid var(--gold);
+}
+.offer-cta-gold:hover { background: var(--gold-light); }
+.offer-featured {
+position: relative;
+}
+.offer-featured::before {
+content: ‘MOST POPULAR’;
+position: absolute;
+top: 20px; right: 20px;
+font-size: 9px;
+letter-spacing: 2px;
+color: var(--gold);
+border: 1px solid var(--gold-dim);
+padding: 4px 10px;
+}
+
+/* WRITING */
+.writing-section {
+padding: 120px 60px;
+background: var(--bg2);
+border-top: 1px solid var(--border);
+}
+.writing-header {
+display: flex;
+justify-content: space-between;
+align-items: flex-end;
+margin-bottom: 60px;
+}
+.writing-header h2 {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: clamp(36px, 4vw, 60px);
+color: var(--cream);
+font-weight: 300;
+letter-spacing: -1px;
+}
+.writing-header h2 em { font-style: italic; color: var(--gold); }
+.writing-list { display: flex; flex-direction: column; gap: 0; }
+.writing-item {
+display: grid;
+grid-template-columns: 80px 1fr auto;
+gap: 40px;
+align-items: center;
+padding: 32px 0;
+border-top: 1px solid var(--border);
+transition: all 0.3s;
+cursor: default;
+}
+.writing-item:last-child { border-bottom: 1px solid var(--border); }
+.writing-item:hover .writing-arrow { transform: translateX(6px); color: var(--gold); }
+.writing-num {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 36px;
+color: var(--text-dim);
+font-weight: 300;
+opacity: 0.4;
+}
+.writing-content-tag {
+font-size: 10px;
+letter-spacing: 3px;
+color: var(--gold);
+text-transform: uppercase;
+margin-bottom: 8px;
+}
+.writing-title {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 22px;
+color: var(--cream);
+margin-bottom: 6px;
+}
+.writing-excerpt { font-size: 13px; color: var(--text-dim); }
+.writing-arrow {
+font-size: 18px;
+color: var(--text-dim);
+transition: all 0.3s;
+}
+
+/* NEWSLETTER */
+.newsletter-section {
+padding: 120px 60px;
+text-align: center;
+position: relative;
+overflow: hidden;
+}
+.newsletter-section::before {
+content: ‘SUBSCRIBE’;
+position: absolute;
+top: 50%; left: 50%;
+transform: translate(-50%, -50%);
+font-family: ‘Cormorant Garamond’, serif;
+font-size: clamp(80px, 15vw, 200px);
+font-weight: 300;
+color: transparent;
+-webkit-text-stroke: 1px rgba(184,150,90,0.04);
+pointer-events: none;
+white-space: nowrap;
+letter-spacing: -4px;
+}
+.newsletter-section h2 {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: clamp(36px, 5vw, 72px);
+color: var(--cream);
+font-weight: 300;
+line-height: 1.1;
+letter-spacing: -1.5px;
+margin-bottom: 20px;
+position: relative;
+}
+.newsletter-section h2 em { color: var(--gold); font-style: italic; }
+.newsletter-section p {
+color: var(--text-dim);
+font-size: 14px;
+max-width: 480px;
+margin: 0 auto 48px;
+line-height: 2;
+position: relative;
+}
+.newsletter-form {
+display: flex;
+max-width: 500px;
+margin: 0 auto;
+gap: 0;
+position: relative;
+}
+.newsletter-input {
+flex: 1;
+background: var(--bg2);
+border: 1px solid var(--border);
+border-right: none;
+color: var(--cream);
+padding: 16px 24px;
+font-family: ‘DM Mono’, monospace;
+font-size: 13px;
+outline: none;
+transition: border-color 0.3s;
+}
+.newsletter-input:focus { border-color: var(--gold); }
+.newsletter-input::placeholder { color: var(--text-dim); }
+.newsletter-btn {
+background: var(--gold);
+border: 1px solid var(--gold);
+color: var(--bg);
+padding: 16px 32px;
+font-family: ‘DM Mono’, monospace;
+font-size: 11px;
+letter-spacing: 2px;
+text-transform: uppercase;
+cursor: none;
+transition: all 0.3s;
+}
+.newsletter-btn:hover { background: var(--gold-light); }
+
+/* FOOTER */
+footer {
+border-top: 1px solid var(--border);
+padding: 60px;
+display: grid;
+grid-template-columns: 1fr 1fr 1fr;
+gap: 60px;
+background: var(--bg2);
+}
+.footer-brand {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 28px;
+font-weight: 300;
+color: var(--cream);
+letter-spacing: 2px;
+margin-bottom: 16px;
+}
+.footer-brand span { color: var(--gold); }
+.footer-tagline { font-size: 12px; color: var(--text-dim); line-height: 1.8; }
+.footer-col h4 {
+font-size: 10px;
+letter-spacing: 3px;
+color: var(--gold);
+text-transform: uppercase;
+margin-bottom: 24px;
+}
+.footer-links { list-style: none; }
+.footer-links li { margin-bottom: 12px; }
+.footer-links a {
+color: var(--text-dim);
+text-decoration: none;
+font-size: 13px;
+transition: color 0.2s;
+}
+.footer-links a:hover { color: var(--gold); }
+.footer-bottom {
+border-top: 1px solid var(--border);
+padding: 24px 60px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+background: var(--bg2);
+}
+.footer-bottom p { font-size: 11px; color: var(--text-dim); letter-spacing: 1.5px; }
+
+/* ANIMATIONS */
+@keyframes fadeUp {
+from { opacity: 0; transform: translateY(24px); }
+to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+from { opacity: 0; }
+to { opacity: 1; }
+}
+@keyframes ticker {
+from { transform: translateX(0); }
+to { transform: translateX(-50%); }
+}
+@keyframes scrollLine {
+0%, 100% { opacity: 0.3; transform: scaleY(1); }
+50% { opacity: 1; transform: scaleY(1.3); }
+}
+
+/* Reveal animation for sections */
+.reveal {
+opacity: 0;
+transform: translateY(32px);
+transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.visible {
+opacity: 1;
+transform: translateY(0);
+}
+
+@media (max-width: 900px) {
+nav { padding: 24px 28px; }
+nav.scrolled { padding: 16px 28px; }
+.nav-links { display: none; }
+.hero { padding: 140px 28px 60px; }
+.section, .pojce-section, .offers-section, .writing-section, .newsletter-section { padding: 80px 28px; }
+.about-grid, .pojce-header, .offers-header { grid-template-columns: 1fr; gap: 48px; }
+.offers-grid { grid-template-columns: 1fr; }
+.writing-item { grid-template-columns: 48px 1fr; }
+.writing-arrow { display: none; }
+footer { grid-template-columns: 1fr; gap: 40px; padding: 48px 28px; }
+.footer-bottom { padding: 20px 28px; flex-direction: column; gap: 8px; text-align: center; }
+}
+</style>
+
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- NAV -->
+
+<nav id="nav">
+  <a href="#" class="nav-logo">Durga <span>Dash</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#framework">Framework</a></li>
+    <li><a href="#offers">Work With Me</a></li>
+    <li><a href="#writing">Writing</a></li>
+  </ul>
+  <a href="#newsletter" class="nav-cta">Get the Newsletter</a>
+</nav>
+
+<!-- HERO -->
+
+<section class="hero">
+  <div class="hero-bg-text">LEAD</div>
+  <div class="hero-eyebrow">Executive Edge · Leadership OS · POJCE Framework</div>
+  <h1 class="hero-headline">
+    Leaders don't<br>
+    rise by accident.<br>
+    They are <em>built.</em>
+  </h1>
+  <p class="hero-sub">
+    I help senior operators and first-time executives develop their leadership identity — and build the people-management system that earns trust, drives performance, and scales without burning them out.
+  </p>
+  <div class="hero-actions">
+    <a href="#offers" class="btn-primary">Work With Me</a>
+    <a href="#framework" class="btn-ghost">Explore the POJCE Framework →</a>
+  </div>
+  <div class="hero-scroll">Scroll</div>
+</section>
+
+<!-- TICKER -->
+
+<div class="ticker-wrap">
+  <div class="ticker">
+    <span class="ticker-item">20+ Years Building Leaders <span>·</span></span>
+    <span class="ticker-item">Amazon · Adobe · Styched <span>·</span></span>
+    <span class="ticker-item">Six Sigma Black Belt <span>·</span></span>
+    <span class="ticker-item">The POJCE Framework <span>·</span></span>
+    <span class="ticker-item">Global Enterprise Customer Success <span>·</span></span>
+    <span class="ticker-item">Executive Coach & Advisor <span>·</span></span>
+    <span class="ticker-item">20+ Years Building Leaders <span>·</span></span>
+    <span class="ticker-item">Amazon · Adobe · Styched <span>·</span></span>
+    <span class="ticker-item">Six Sigma Black Belt <span>·</span></span>
+    <span class="ticker-item">The POJCE Framework <span>·</span></span>
+    <span class="ticker-item">Global Enterprise Customer Success <span>·</span></span>
+    <span class="ticker-item">Executive Coach & Advisor <span>·</span></span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+
+<section class="section" id="about">
+  <div class="section-label">About</div>
+  <div class="about-grid reveal">
+    <div class="about-left">
+      <h2>I've been in the room where <em>it actually happens.</em></h2>
+      <p>Not a theorist. Not a course creator who learned leadership from books. I built and ran teams across Amazon, Adobe, and co-founded a startup from scratch — navigating the GCC, India, and Southeast Asian markets along the way.</p>
+      <p>For 20 years, I watched what separates leaders who scale from those who stall. It comes down to five principles — and I built a framework around them.</p>
+      <p>Today I help operators and executives develop their leadership identity, build trust-first cultures, and create systems that don't require their constant presence to run well.</p>
+      <div class="about-stats">
+        <div class="stat">
+          <div class="stat-number">20+</div>
+          <div class="stat-label">Years in the arena</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">3</div>
+          <div class="stat-label">Major organisations</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">5</div>
+          <div class="stat-label">POJCE principles</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">∞</div>
+          <div class="stat-label">Leaders I intend to build</div>
+        </div>
+      </div>
+    </div>
+    <div class="about-right">
+      <div class="about-card">
+        <div class="about-card-label">Previously</div>
+        <p>Global Head of Enterprise Customer Success at Adobe — scaling teams and enterprise GTM across multiple geographies.</p>
+      </div>
+      <div class="about-card">
+        <div class="about-card-label">Operator Background</div>
+        <p>Co-founded Styched — built operations from zero across India and UAE markets, navigating GCC expansion as a co-founder and COO.</p>
+      </div>
+      <div class="about-card">
+        <div class="about-card-label">Systems Thinker</div>
+        <p>Six Sigma Black Belt. Head of Performance Advertising and Customer Success at Amazon. Frameworks aren't theory — they're survival tools.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- POJCE FRAMEWORK -->
+
+<section class="pojce-section" id="framework">
+  <div class="section-label">The Framework</div>
+  <div class="pojce-header reveal">
+    <div>
+      <h2>The <em>POJCE</em><br>Framework</h2>
+    </div>
+    <div>
+      <p>Five principles that separate operators who plateau from leaders who compound. Built from 20 years inside the machine — not from the outside looking in.</p>
+      <p style="margin-top:16px; color: var(--text-dim);">This isn't theory. This is what actually moves people.</p>
+    </div>
+  </div>
+  <div class="pojce-letters reveal">
+    <div class="pojce-letter">
+      <div class="pojce-initial">P</div>
+      <div>
+        <div class="pojce-content-word">Performance & Accountability</div>
+        <div class="pojce-content-desc">Leaders set the standard by holding it first — for themselves, before anyone else. Accountability is not a meeting agenda item. It's a posture.</div>
+      </div>
+    </div>
+    <div class="pojce-letter">
+      <div class="pojce-initial">O</div>
+      <div>
+        <div class="pojce-content-word">Ownership</div>
+        <div class="pojce-content-desc">Not ownership of tasks — ownership of outcomes. The leader who owns the result, not just the process, is the one who builds real authority.</div>
+      </div>
+    </div>
+    <div class="pojce-letter">
+      <div class="pojce-initial">J</div>
+      <div>
+        <div class="pojce-content-word">Judgement</div>
+        <div class="pojce-content-desc">In the absence of data, judgement fills the gap. Great leaders develop the muscle to make hard calls fast — without waiting for certainty.</div>
+      </div>
+    </div>
+    <div class="pojce-letter">
+      <div class="pojce-initial">C</div>
+      <div>
+        <div class="pojce-content-word">Coaching</div>
+        <div class="pojce-content-desc">The highest-leverage act of leadership is developing others. Coaching multiplies your impact beyond your hours. It is the exit from the execution trap.</div>
+      </div>
+    </div>
+    <div class="pojce-letter">
+      <div class="pojce-initial">E</div>
+      <div>
+        <div class="pojce-content-word">Empathy, Trust & Listening</div>
+        <div class="pojce-content-desc">Not soft skills — strategic edges. The leader who listens well, trusts deliberately, and leads with empathy retains talent and unlocks performance that control never could.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OFFERS -->
+
+<section class="offers-section" id="offers">
+  <div class="section-label">Work With Me</div>
+  <div class="offers-header reveal">
+    <h2>Choose how<br>we <em>build</em> together.</h2>
+    <p>Three engagement paths — from foundational frameworks to deep executive partnership. All designed to deliver one thing: a leader who doesn't just manage, but multiplies.</p>
+  </div>
+  <div class="offers-grid reveal">
+    <!-- Entry -->
+    <div class="offer-card">
+      <div class="offer-tier">Entry · Self-Paced</div>
+      <div class="offer-price">$297</div>
+      <div class="offer-price-note">one-time</div>
+      <div class="offer-name">The POJCE Leadership Audit</div>
+      <div class="offer-tagline">A deep-dive async assessment of your current leadership identity — delivered with a personalised scorecard and a 90-day action plan.</div>
+      <ul class="offer-items">
+        <li>POJCE self-assessment framework</li>
+        <li>Personalised leadership scorecard</li>
+        <li>Video walkthrough of your results (30 min)</li>
+        <li>90-day execution roadmap</li>
+        <li>Async follow-up Q&A (7 days)</li>
+      </ul>
+      <a href="https://stan.store/durgaonleadership" class="offer-cta offer-cta-outline" target="_blank">Get the Audit →</a>
+    </div>
+    <!-- Mid -->
+    <div class="offer-card offer-featured">
+      <div class="offer-tier">Mid · Live Cohort</div>
+      <div class="offer-price">$1,200</div>
+      <div class="offer-price-note">per cohort · 6 weeks</div>
+      <div class="offer-name">The Executive Edge Cohort</div>
+      <div class="offer-tagline">A 6-week live group programme where operators build their leadership OS — from identity to systems to influence.</div>
+      <ul class="offer-items">
+        <li>6 live weekly sessions (90 min each)</li>
+        <li>POJCE workbook + templates</li>
+        <li>Peer cohort (max 12 participants)</li>
+        <li>Accountability system & weekly check-ins</li>
+        <li>Private community access (3 months)</li>
+        <li>30-min 1:1 session with Durga</li>
+      </ul>
+      <a href="https://stan.store/durgaonleadership" class="offer-cta offer-cta-gold" target="_blank">Join the Cohort →</a>
+    </div>
+    <!-- Premium -->
+    <div class="offer-card">
+      <div class="offer-tier">Premium · 1:1 Partnership</div>
+      <div class="offer-price">$1,200</div>
+      <div class="offer-price-note">per month · 90-day minimum</div>
+      <div class="offer-name">Executive Partner Retainer</div>
+      <div class="offer-tagline">Private 1:1 coaching and advisory — for leaders who want a thought partner in their corner for the hard decisions, not just the frameworks.</div>
+      <ul class="offer-items">
+        <li>2 × 60-min sessions per month</li>
+        <li>Unlimited async voice/text access</li>
+        <li>POJCE audit + ongoing scoring</li>
+        <li>Team and culture diagnostics</li>
+        <li>Quarterly leadership review</li>
+        <li>Direct WhatsApp/email access</li>
+      </ul>
+      <a href="https://stan.store/durgaonleadership" class="offer-cta offer-cta-outline" target="_blank">Apply for Partnership →</a>
+    </div>
+  </div>
+</section>
+
+<!-- WRITING -->
+
+<section class="writing-section" id="writing">
+  <div class="writing-header reveal">
+    <div>
+      <div class="section-label">Writing</div>
+      <h2>Ideas that <em>move</em> leaders.</h2>
+    </div>
+    <a href="https://durgaonleadership.substack.com" class="btn-ghost" target="_blank">Read all essays →</a>
+  </div>
+  <div class="writing-list reveal">
+    <div class="writing-item">
+      <div class="writing-num">01</div>
+      <div>
+        <div class="writing-content-tag">POJCE Framework</div>
+        <div class="writing-title">The 5 Mistakes New Leaders Make (And the Framework I Use to Fix Them)</div>
+        <div class="writing-excerpt">Most first-time leaders manage the work. Great ones manage the humans doing the work. Here's the difference.</div>
+      </div>
+      <div class="writing-arrow">→</div>
+    </div>
+    <div class="writing-item">
+      <div class="writing-num">02</div>
+      <div>
+        <div class="writing-content-tag">Accountability</div>
+        <div class="writing-title">Why Accountability Feels Hard (And Why That's the Point)</div>
+        <div class="writing-excerpt">Accountability isn't about blame. It's about building a culture where honesty is safer than silence.</div>
+      </div>
+      <div class="writing-arrow">→</div>
+    </div>
+    <div class="writing-item">
+      <div class="writing-num">03</div>
+      <div>
+        <div class="writing-content-tag">Judgement</div>
+        <div class="writing-title">How I Make Hard Decisions Fast: The Operator's Judgement Stack</div>
+        <div class="writing-excerpt">20 years across Amazon and Adobe taught me that waiting for perfect information is a luxury leaders rarely have.</div>
+      </div>
+      <div class="writing-arrow">→</div>
+    </div>
+    <div class="writing-item">
+      <div class="writing-num">04</div>
+      <div>
+        <div class="writing-content-tag">Coaching</div>
+        <div class="writing-title">The Exit from the Execution Trap: Why Leaders Must Coach or Burn Out</div>
+        <div class="writing-excerpt">If everything depends on your presence, you're not a leader — you're a bottleneck. Here's how to break out.</div>
+      </div>
+      <div class="writing-arrow">→</div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+
+<section class="newsletter-section" id="newsletter">
+  <h2>One essay.<br>Every <em>week.</em></h2>
+  <p>Leadership insights from 20 years inside the machine — delivered to your inbox every Sunday. No fluff. No generic advice. Just frameworks that work.</p>
+  <div class="newsletter-form">
+    <input type="email" class="newsletter-input" placeholder="your@email.com" id="emailInput">
+    <button class="newsletter-btn" onclick="window.open('https://durgaonleadership.substack.com', '_blank')">Subscribe</button>
+  </div>
+  <p style="margin-top:20px; font-size:11px; color:var(--text-dim); letter-spacing:1px;">Join 1,000+ operators and executives · No spam, ever</p>
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+  <div>
+    <div class="footer-brand">Durga <span>Dash</span></div>
+    <p class="footer-tagline">Building the leaders who build companies — through the POJCE Framework and 20 years of operator wisdom.</p>
+  </div>
+  <div class="footer-col">
+    <h4>Navigate</h4>
+    <ul class="footer-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#framework">POJCE Framework</a></li>
+      <li><a href="#offers">Work With Me</a></li>
+      <li><a href="#writing">Writing</a></li>
+    </ul>
+  </div>
+  <div class="footer-col">
+    <h4>Connect</h4>
+    <ul class="footer-links">
+      <li><a href="https://durgaonleadership.substack.com" target="_blank">Substack Newsletter</a></li>
+      <li><a href="https://twitter.com/DMD_Leadership" target="_blank">Twitter / X</a></li>
+      <li><a href="#" target="_blank">Instagram (coming soon)</a></li>
+      <li><a href="https://stan.store/durgaonleadership" target="_blank">Stan Store</a></li>
+    </ul>
+  </div>
+</footer>
+<div class="footer-bottom">
+  <p>©️ 2026 Durga Dash. All rights reserved.</p>
+  <p>Built with intention. Not templates.</p>
+</div>
+
+<script>
+  // Cursor
+  const cursor = document.getElementById('cursor');
+  const ring = document.getElementById('cursorRing');
+  let mx = 0, my = 0, rx = 0, ry = 0;
+  document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+  (function animCursor() {
+    rx += (mx - rx) * 0.18;
+    ry += (my - ry) * 0.18;
+    cursor.style.left = mx + 'px';
+    cursor.style.top = my + 'px';
+    ring.style.left = rx + 'px';
+    ring.style.top = ry + 'px';
+    requestAnimationFrame(animCursor);
+  })();
+
+  // Nav scroll
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // Reveal on scroll
+  const reveals = document.querySelectorAll('.reveal');
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+  }, { threshold: 0.1 });
+  reveals.forEach(r => obs.observe(r));
+</script>
+
+</body>
+</html>
