@@ -1,0 +1,24 @@
+{
+  "name": "com.durgadash",
+  "version": "1.0.0",
+  "description": "[![Netlify Status](https://api.netlify.com/api/v1/badges/6e6f6bb1-78c4-4663-a9e6-f45f95d1c3e7/deploy-status)](https://app.netlify.com/projects/theexecutiveedge/deploys)",
+  "homepage": "https://github.com/swaraj89/thexecutiveedge.co#readme",
+  "bugs": {
+    "url": "https://github.com/swaraj89/thexecutiveedge.co/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/swaraj89/thexecutiveedge.co.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "start": "serve frontend",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "serve": "^14.2.6"
+  }
+}

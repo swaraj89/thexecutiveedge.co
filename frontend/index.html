@@ -628,8 +628,10 @@ font-family: ‘Cormorant Garamond’, serif;
 font-size: 22px;
 color: var(--cream);
 margin-bottom: 6px;
+transition: color 0.3s;
 }
 .writing-excerpt { font-size: 13px; color: var(--text-dim); }
+.writing-item:hover .writing-title { color: var(--gold); }
 .writing-arrow {
 font-size: 18px;
 color: var(--text-dim);
@@ -1161,6 +1163,15 @@ footer { grid-template-columns: 1fr; gap: 40px; padding: 48px 28px; }
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
   }, { threshold: 0.1 });
   reveals.forEach(r => obs.observe(r));
+
+  // Writing article navigation
+  const writingItems = document.querySelectorAll('.writing-item');
+  writingItems.forEach(arrow => {
+    arrow.style.cursor = 'pointer';
+    arrow.addEventListener('click', () => {
+      window.open('https://substack.com/@durgaonleadership', '_blank');
+    });
+  });
 </script>
 
 </body>
